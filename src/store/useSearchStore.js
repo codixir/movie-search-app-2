@@ -7,7 +7,7 @@ const useSearchStore = create((set) => ({
     setSearchQuery: (query) => set({ searchQuery: query }),
     fetchMovies: async (query) => {
         const apikey = process.env.REACT_APP_OMDB_API_KEY;
-        const response = await fetch(`http://www.omdbapi.com/?apikey=${apikey}&s=${query}`);
+        const response = await fetch(`https://www.omdbapi.com/?apikey=${apikey}&s=${query}`);
         const data = await response.json();
         if (data.Response === "True") {
             set({ movies: data.Search });
@@ -17,7 +17,7 @@ const useSearchStore = create((set) => ({
     },
     fetchMovieDetail: async (id) => {
         const apikey = process.env.REACT_APP_OMDB_API_KEY;
-        const response = await fetch(`http://www.omdbapi.com/?apikey=${apikey}&i=${id}`);
+        const response = await fetch(`https://www.omdbapi.com/?apikey=${apikey}&i=${id}`);
         const data = await response.json();
         set({ movieDetail: data });
     },
